@@ -120,6 +120,10 @@
   margin-top: 10px;
 }
 
+/* .submitButton:hover {
+  background: #6373b6;
+} */
+
 .submitButton:hover:not(:disabled) {
   background-color: #6373b6;
 }

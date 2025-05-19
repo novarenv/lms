@@ -19,7 +19,6 @@ const LoginModal: React.FC<LoginModalProps> = ({
   onLogin,
   errorMessage = '',
   buttonColor = '#5264AE',
-  buttonHoverColor = '#6373b6',
   disabledButtonColor = '#a8b1d6'
 }) => {
   const [isLoginView, setIsLoginView] = useState(true);
