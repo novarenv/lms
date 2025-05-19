@@ -10,6 +10,7 @@ import ToggleText from "../components/ToggleText";
 import UserForm from "../components/UserForm";
 
 import Login from "../features/Login";
+import Logout from "../features/Logout/Logout";
 
 const Home: React.FC = () => {
   const items = ["A", "B", "C"]
@@ -38,6 +39,7 @@ const Home: React.FC = () => {
       </nav>
 
       <Login />
+      <Logout />
 
       <div>
         <ParentChild />

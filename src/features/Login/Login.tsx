@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoginModal from '../../components/LoginModal';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../components/AuthContext';
@@ -7,13 +7,18 @@ import { UserRole } from "../../components/roles";
 const Login: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [authError, setAuthError] = useState('');
+  const storedUser = localStorage.getItem('user');
 
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-    setAuthError('');
+    if (storedUser) {
+      navigate('/dashboard')
+    } else {
+      setIsModalOpen(true);
+      setAuthError('');
+    }
   };
 
   const handleCloseModal = () => {
