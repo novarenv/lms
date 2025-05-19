@@ -9,7 +9,9 @@ import ToggleSwitch from "../components/ToggleSwitch";
 import ToggleText from "../components/ToggleText";
 import UserForm from "../components/UserForm";
 
-function Home() {
+import Login from "../features/Login";
+
+const Home: React.FC = () => {
   const items = ["A", "B", "C"]
   const tabData = [
     {
@@ -26,19 +28,21 @@ function Home() {
     <>
       <nav>
         <ul>
-          <li style={{fontSize: 24}}>
+          <li style={{ fontSize: 24 }}>
             <Link to="/">Home</Link>
           </li>
-          <li style={{fontSize: 24}}>
+          <li style={{ fontSize: 24 }}>
             <Link to="/about">About</Link>
           </li>
         </ul>
       </nav>
 
+      <Login />
+
       <div>
         <ParentChild />
         <SearchableList items={items} />
-        <Tabs tabData={tabData}/>
+        <Tabs tabData={tabData} />
         <ThemeContext />
         <TodoList />
         <ToggleSwitch />
