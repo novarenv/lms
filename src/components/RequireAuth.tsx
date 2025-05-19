@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation, Location } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { User } from './roles';
+import { useState, useEffect } from 'react';
 
 // Define the Auth context interface
 interface AuthContextType {
@@ -16,9 +17,16 @@ interface RequireAuthProps {
 const RequireAuth: React.FC<RequireAuthProps> = ({ allowedRoles }) => {
   const { user } = useAuth() as AuthContextType;
   const location = useLocation() as Location;
+  const [isLoading, setIsLoading] = useState(true);
 
-  console.log("User", JSON.stringify(user))
-  console.log("allowedRoles", JSON.stringify(allowedRoles))
+  useEffect(() => {
+    // This ensures we wait for the auth state to be loaded from localStorage
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading authentication status...</div>;
+  }
 
   // Check if user exists and has required role
   const userHasRequiredRole = user
